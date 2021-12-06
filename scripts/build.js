@@ -1,9 +1,7 @@
 const webpack = require('webpack');
-
 const webpackConfig = require('../config/webpack.config');
 
 function build() {
-  console.log(__dirname);
   webpack(webpackConfig, (err, stats) => {
     if (err) {
       console.error(err);

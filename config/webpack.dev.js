@@ -1,20 +1,49 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const babelConfig = require('../babel.config.json');
 
 const htmlWebpackPlugin = new HtmlWebpackPlugin({
-  template: path.join(__dirname, '../../examples/index.html'),
+  template: path.join(__dirname, './template/index.html'),
   filename: './index.html',
 });
 
+console.log(babelConfig);
+
 module.exports = {
   mode: 'development',
-  entry: path.resolve(__dirname, '../../examples/index'),
+  entry: path.join(__dirname, './template/index.tsx'),
   module: {
     rules: [
       {
         test: /.tsx?$/,
-        use: ['babel-loader'],
-        exclude: /node_modules/,
+        use: [
+          [
+            'babel-loader',
+            {
+              options: {
+                presets: [
+                  [
+                    '@babel/preset-env',
+                    {
+                      modules: false,
+                    },
+                  ],
+                  '@babel/preset-typescript',
+                  '@babel/preset-react',
+                ],
+                plugins: [
+                  [
+                    '@babel/plugin-proposal-decorators',
+                    {
+                      legacy: true,
+                    },
+                  ],
+                ],
+              },
+            },
+          ],
+        ],
+        exclude: /node_modules(?!\/crc-scripts)/,
       },
       {
         test: /\.less$/,
@@ -40,7 +69,7 @@ module.exports = {
     extensions: ['.ts', '.tsx', '...'],
   },
   devServer: {
-    port: 3009,
+    port: 2333,
     host: '0.0.0.0',
   },
 };

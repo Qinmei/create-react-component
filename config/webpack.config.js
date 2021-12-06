@@ -1,14 +1,14 @@
 const path = require('path');
 const autoprefixer = require('autoprefixer');
+const { appPath } = require('./paths');
 
 module.exports = {
   mode: 'production',
-  entry: path.resolve(__dirname, './src/index'),
+  entry: path.resolve(appPath, './src/index'),
   output: {
     filename: 'index.js',
     clean: true,
-    libraryTarget: 'module',
-    path: path.resolve(__dirname, './lib'),
+    path: path.resolve(appPath, './lib'),
   },
   module: {
     rules: [
@@ -69,8 +69,5 @@ module.exports = {
   resolve: {
     extensions: ['.ts', '.tsx', '...'],
   },
-  externals: ['react'],
-  experiments: {
-    outputModule: true,
-  },
+  externals: ['react', 'react-dom'],
 };
