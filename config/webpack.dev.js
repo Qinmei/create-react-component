@@ -4,10 +4,7 @@ const babelConfig = require('../babel.config.json');
 
 const htmlWebpackPlugin = new HtmlWebpackPlugin({
   template: path.join(__dirname, './template/index.html'),
-  filename: './index.html',
 });
-
-console.log(babelConfig);
 
 module.exports = {
   mode: 'development',
@@ -16,34 +13,13 @@ module.exports = {
     rules: [
       {
         test: /.tsx?$/,
-        use: [
-          [
-            'babel-loader',
-            {
-              options: {
-                presets: [
-                  [
-                    '@babel/preset-env',
-                    {
-                      modules: false,
-                    },
-                  ],
-                  '@babel/preset-typescript',
-                  '@babel/preset-react',
-                ],
-                plugins: [
-                  [
-                    '@babel/plugin-proposal-decorators',
-                    {
-                      legacy: true,
-                    },
-                  ],
-                ],
-              },
-            },
-          ],
-        ],
         exclude: /node_modules(?!\/crc-scripts)/,
+        use: [
+          {
+            loader: 'babel-loader',
+            options: babelConfig.env.development,
+          },
+        ],
       },
       {
         test: /\.less$/,

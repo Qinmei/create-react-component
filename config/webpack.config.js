@@ -1,6 +1,9 @@
 const path = require('path');
 const autoprefixer = require('autoprefixer');
+const ESLintPlugin = require('eslint-webpack-plugin');
+
 const { appPath } = require('./paths');
+const babelConfig = require('../babel.config.json');
 
 module.exports = {
   mode: 'production',
@@ -14,7 +17,15 @@ module.exports = {
     rules: [
       {
         test: /.tsx?$/,
-        use: ['babel-loader', 'ts-loader'],
+        use: [
+          {
+            loader: 'babel-loader',
+            options: babelConfig.env.production,
+          },
+          {
+            loader: 'ts-loader',
+          },
+        ],
         exclude: /node_modules/,
       },
       {
@@ -66,6 +77,13 @@ module.exports = {
       },
     ],
   },
+  plugins: [
+    new ESLintPlugin({
+      context: appPath,
+      extensions: ['ts', 'tsx'],
+      eslintPath: require.resolve('eslint'),
+    }),
+  ],
   resolve: {
     extensions: ['.ts', '.tsx', '...'],
   },
