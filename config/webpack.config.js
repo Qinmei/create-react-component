@@ -24,6 +24,10 @@ module.exports = {
           },
           {
             loader: 'ts-loader',
+            options: {
+              context: appPath,
+              configFile: path.resolve(__dirname, '../tsconfig.json'),
+            },
           },
         ],
         exclude: /node_modules/,
