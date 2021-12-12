@@ -11,7 +11,7 @@ jobs:
     name: publish
     steps:
       - name: publish
-      - uses: primer/publish@v3
+        uses: primer/publish@v3
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
