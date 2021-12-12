@@ -10,7 +10,6 @@ jobs:
     runs-on: ubuntu-latest
     name: publish
     steps:
-      - uses: actions/checkout@main
       - name: publish
       - uses: primer/publish@v3
         env:
