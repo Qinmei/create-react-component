@@ -1,25 +1,3 @@
 {
-  "compilerOptions": {
-    "baseUrl": ".",
-    "target": "es5",
-    "lib": ["dom", "dom.iterable", "esnext"],
-    "allowJs": true,
-    "skipLibCheck": true,
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
-    "strict": true,
-    "forceConsistentCasingInFileNames": true,
-    "module": "esnext",
-    "moduleResolution": "node",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "jsx": "react-jsx",
-    "noFallthroughCasesInSwitch": true,
-    "declaration": true,
-    "declarationDir": "types",
-    "paths": {
-      "src": ["src"]
-    }
-  },
-  "include": ["src"]
+  "extends": "./node_modules/crc-scripts/.eslintrc.json"
 }
