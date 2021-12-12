@@ -1,5 +1,5 @@
-const webpack = require("webpack");
-const webpackConfig = require("../config/webpack.config");
+const webpack = require('webpack');
+const webpackConfig = require('../config/webpack.config');
 
 function build() {
   webpack(webpackConfig, (err, stats) => {
@@ -21,6 +21,6 @@ function build() {
   });
 }
 
-console.log("\n===> running build");
+console.log('\n===> running build');
 
 build();

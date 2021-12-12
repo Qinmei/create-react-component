@@ -1,6 +1,6 @@
 {
   "name": "crc-scripts",
-  "version": "1.0.5-beta.59",
+  "version": "1.0.5-beta.88",
   "main": "index.js",
   "license": "MIT",
   "files": [
@@ -9,6 +9,7 @@
     "lib",
     "scripts",
     "template",
+    ".eslintrc.json",
     "babel.config.json"
   ],
   "bin": {
